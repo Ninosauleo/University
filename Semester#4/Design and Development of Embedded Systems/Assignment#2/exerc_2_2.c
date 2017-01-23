@@ -1,21 +1,40 @@
+
+/*
+ 
+ File name: exerc_x_y.c (or cpp)
+ 
+ Date: 2017-01-23
+ 
+ Group Number:  #nr 4
+ 
+ Members of students contributed:
+ 
+ Rafael Antonino Sauleo
+ 
+ Filip Isakovski
+ 
+ Maria-Bianca Cindroi
+ 
+ Demonstration code: [<Examen code> <xxxx>] PENDING
+ 
+ 
+ Create an array of integers, array[MAX], and fill it with MAX no of random numbers. Let then the
+ program print out the following:
+ The value of the label array (address) is: xxxxxxxxxx
+ First integer in the array is (array[0]) : xxxxxxxxxx
+ The size of an integer (number of bytes) is : xxxxxxxxx
+ The size of the whole array is : xxxxxxxxx
+ End the program by printing out the array, then double all values in the array by use of a pointer and
+ print it out again.
+ */
+
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
 
 #define MAX 10 //define the size of the array
 
-/*
-@author Antonino Sauleo, Maria-Bianca Cindroi, Filip Isakovski
-
-Create an array of integers, array[MAX], and fill it with MAX no of random numbers. Let then the
-program print out the following:
-The value of the label array (address) is: xxxxxxxxxx
-First integer in the array is (array[0]) : xxxxxxxxxx
-The size of an integer (number of bytes) is : xxxxxxxxx
-The size of the whole array is : xxxxxxxxx
-End the program by printing out the array, then double all values in the array by use of a pointer and
-print it out again.
- */
 
 int main(int argc, char **argv) {
     int array[MAX]; //fixed size of an array of integers with value MAX
