@@ -39,6 +39,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include <memory.h>
 
 #define MAX 100
 #define MAXNUMBER 20
@@ -88,10 +89,18 @@ void bubbleSort(int tab[], int array_size) { //sorting method
 
 
 void draw_histogram(int freq[], int tab[]){
-    char stringX = 'x';
+    char stringX[100];
+    
     for(int i=0;i<MAX;i++){
         if(tab[i]!='\0'){
-            printf("%d is %d times.\n",tab[i],freq[i]);
+            int count = freq[i];
+            memset(stringX, 0, sizeof(stringX)); //clean the string character before entering next digit.
+            for(int i=0;i<count;i++){
+                strcat(stringX, "X");
+            }
+            printf("%d is %s times.\n",tab[i],stringX);
+            
+            
         }
     }
 }
