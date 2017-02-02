@@ -1,20 +1,20 @@
 /*
  File name: exerc_2_7.c
- 
+
  Date: 2017-01-25
- 
+
  Group Number:  #nr 4
- 
+
  Members of students contributed:
- 
+
  Rafael Antonino Sauleo
- 
+
  Filip Isakovski
- 
+
  Maria-Bianca Cindroi
- 
- Demonstration code: [<Examen code> <xxxx>] PENDING
- 
+
+ Demonstration code: [<Examen code> <10699>]
+
  */
 #include <stdlib.h>
 #include <stdio.h>
@@ -51,24 +51,24 @@ long controlDigit(const char* person) { //algorithm MAYBE DECLARE IT AS INT
     int sum = 0;
     int temp = (person[0]-'0') * 2;
     int tempSum = temp / 10 + temp % 10;
-    
+
     tempSum += (person[1]-'0');
-    
+
     temp = (person[2]-'0') * 2;
     tempSum += temp / 10 + temp % 10;
     tempSum += (person[3]-'0');
-    
+
     temp = (person[4]-'0') * 2;
     tempSum += temp / 10 + temp % 10;
     tempSum += (person[5]-'0');
-    
+
     temp = (person[6]-'0') * 2;
     tempSum += temp / 10 + temp % 10;
     tempSum += (person[7]-'0');
-    
+
     temp = (person[8]-'0') * 2;
     tempSum += temp / 10 + temp % 10;
-    
+
     sum = 10 - (tempSum % 10);
     return sum;
 }
@@ -84,9 +84,9 @@ int takeDay(char *person) {
         dayChar[j] = person[i];
         j++;
     }
-    
+
     int day = atoi(dayChar);
-    
+
     if(day>0 && day <32){
         return day;
     }
@@ -106,9 +106,9 @@ int takeMonth(char *person) {
         monthChar[j] = person[i];
         j++;
     }
-    
+
     int month = atoi(monthChar);
-    
+
     if(month>0 && month <13){
         return month;
     }
@@ -141,30 +141,31 @@ int main() {
     int day;
     int month;
     int year;
-    
+
     do {
         printf("Introduce a personal number!\n");
         readPersnr(pointer);
-        
+
         personal_number = controlDigit(pointer);//check this algorithm
-        printf("control %ld\n", personal_number); //this returns 6?
-        printf("last digit %c\n", person[9]);
-        
+        printf("Algorithm control %d\n", personal_number);
+        printf("Real last digit %c\n", person[9]);
+
         if(personal_number == (person[9] - '0')) {
             year = takeYear(pointer);
             printf("The year of your birthday is: %d\n", year);
-            
+
             month = takeMonth(pointer);
             printf("The month of your birthday is: %d\n", month);
-            
+
             day = takeDay(pointer);
             printf("The day of your birthday is: %d\n", day);
         }
-        
+
         fseek(stdin,0,SEEK_END); //we need to flush the input of before.
-        
+        fflush(stdin);
+
     } while(person[0] != 'q');
-    
-    
+
+
     return 0;
 }

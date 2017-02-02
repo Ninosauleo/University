@@ -15,7 +15,7 @@
  
  Maria-Bianca Cindroi
  
- Demonstration code: [<Examen code> <xxxx>] PENDING
+ Demonstration code: [<Examen code> <10505>]
  
  
  Create an array of integers, array[MAX], and fill it with MAX no of random numbers. Let then the
@@ -50,11 +50,11 @@ int main(int argc, char **argv) {
     printf("The size of an integer (number of bytes) is: %ld \n", sizeof(array[0])); //FIX
     printf("The size of the whole array is : %d\n", MAX);
     printf("The size of the whole array is :");
-
+    
     for (i = 0; i < MAX; i++){
         printf("%d ", array[i]);
     }
-
+    
     printf("\nThe size of the whole double array is :");
     for (i = 0; i < MAX; i++){
         array[i] = *(labelPtr + i) * 2;
