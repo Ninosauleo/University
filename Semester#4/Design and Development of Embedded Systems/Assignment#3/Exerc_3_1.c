@@ -2,7 +2,7 @@
 
  File name: exerc_3_1.c (or cpp)
 
- Date: 2017-01-23
+ Date: 2017-02-06
 
  Group Number:  #nr 4
 
@@ -14,7 +14,7 @@
 
  Maria-Bianca Cindroi
 
- Demonstration code: [<Examen code> <0000>] PENDING
+ Demonstration code: [<Examen code> <20295>]
 
  Implement a test program for a robot. The program asks for the robot's starting position (x, y
 coordinates) and then for a string of characters 'm' and 't', where m stands for move a step in current
@@ -59,7 +59,7 @@ typedef struct robot{
 
 
 enum COMMAND {
-    M = 'm', T = 't'
+    M = 'm', T = 't', P = 'p'
 };
 
 
@@ -80,7 +80,7 @@ void move(enum DIRECTION direction){
             printf("it moved north!, %d\n", robot.ypos);
             break;
         case O:
-            robot.xpos--;
+            robot.xpos++;
             printf("it moved east!%d\n", robot.xpos);
             break;
         case S:
@@ -88,7 +88,7 @@ void move(enum DIRECTION direction){
             printf("it moved south!%d\n", robot.ypos);
             break;
         case W:
-            robot.xpos++;
+            robot.xpos--;
             printf("it moved west! %d\n", robot.xpos);
             break;
 
@@ -127,6 +127,13 @@ void turn(enum DIRECTION direction){
 
 }
 
+void printLocation(ROBOT robot){
+    printf("THE ROBOT'S CURRENT LOCATION IS\n");
+    printf("X Position: %d\n", robot.xpos);
+    printf("Y Position: %d\n", robot.ypos);
+    printf("Direction: %c\n", robot.dir);
+}
+
 void choose_Command(enum COMMAND command){
     switch( command ) {
         case M:
@@ -135,6 +142,10 @@ void choose_Command(enum COMMAND command){
         case T:
             turn(robot.dir);
             break;
+
+        case P:
+            printLocation(robot);
+            exit(0);
 
         default:
             printf("INPUT ERROR");
@@ -149,12 +160,6 @@ char readInput(char *pointer){
     fflush(stdin);
 }
 
-void printLocation(ROBOT robot){
-    printf("THE ROBOT'S CURRENT LOCATION IS\n");
-    printf("X Position: %d\n", robot.xpos);
-    printf("Y Position: %d\n", robot.ypos);
-    printf("Direction: %c\n", robot.dir);
-}
 
 int main(int argc, char **argv) {
     enum DIRECTION position;
@@ -169,34 +174,30 @@ int main(int argc, char **argv) {
     char *choosePointer = choose;
 
     do{
-    printf("Insert X position:");
-    readInput(xPointer);
-    /*
-    position = x[0];
-    printf("position %c\n", position);
-    move(position);
-     */
-    printf("x: %c\n", x[0]);
+        printf("Insert X position:");
+        readInput(xPointer);
 
-    printf("Insert Y position:\n");
-    readInput(yPointer);
-    printf("y: %c\n", y[0]);
+        printf("x: %c\n", x[0]);
+
+        printf("Insert Y position:\n");
+        readInput(yPointer);
+        printf("y: %c\n", y[0]);
 
 
-    robot_Command(atoi(x), atoi(y), N);
-    printLocation(robot);
+        robot_Command(atoi(x), atoi(y), N);
+        printLocation(robot);
 
         do {
-            printf("Choose between 'm' and 't'\n");
+            printf("Choose 'm' to MOVE, 't' to TURN or 'p' to exit\n");
             printf("where m stands for move a step in current direction and t for turn of direction as below\n");
             readInput(choosePointer);
             position = choose[0];
             choose_Command(position);
-        }while (choose[0] != 'q');
+        }while (choose[0] != 'p');
 
 
 
-    } while (choose[0] != 'q');
+    } while (choose[0] != 'p');
 
 
 
